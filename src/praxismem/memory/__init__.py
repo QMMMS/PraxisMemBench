@@ -1,0 +1,1 @@
+"""Markdown memory manager."""

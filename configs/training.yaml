@@ -1,0 +1,37 @@
+# Numeric defaults from the public method and training appendix.
+model:
+  path: null  # Supply a local base-model directory.
+  backbone: Qwen3.5-9B
+  embedding_model: Qwen3-Embedding-0.6B
+data:
+  train_files: []  # Paths to the training Parquet files.
+  max_prompt_length: 24576
+  max_response_length: 4096
+  train_batch_size: 8
+rollout:
+  n: 8
+  temperature: 1.0
+  top_p: 1.0
+  top_k: -1
+actor:
+  strategy: fsdp2
+  full_parameter: true
+  learning_rate: 1.0e-6
+  ppo_mini_batch_size: 8
+  clip_ratio: 0.2
+  reference_kl_coefficient: 0.01
+  epochs: 1
+opsd:
+  teacher: current_actor_snapshot
+  routing: criterion_chunk
+  semantic_threshold: 0.7
+  coverage_threshold: 0.7
+  wrong_location_weight: 0.2
+  peak_weight: 0.05
+  warmup_fraction: 0.1
+runtime:
+  retrieval_call_cap: 30
+  update_chunk_tokens: 4096
+verl:
+  revision: 1bf9d2d76c244238e8219531c582819a6b407d47
+  checkout: null

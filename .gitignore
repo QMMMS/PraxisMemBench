@@ -1,0 +1,17 @@
+tmp/
+test/
+hugging_face/
+/tests/
+/.runtime/
+/outputs/
+/models/
+/data/benchmark/
+/data/praxismem/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.venv/
+.env
+*.local.yaml
+*.log

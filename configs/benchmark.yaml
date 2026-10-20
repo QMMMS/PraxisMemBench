@@ -1,0 +1,85 @@
+setting: scheduled
+dataset:
+  root: data/benchmark
+  repository_env: PRAXISMEMBENCH_DATASET
+run:
+  exp_name: embedding_rag
+  runs_root: outputs
+  max_parallel: 1
+  stagger_seconds: 120
+openclaw:
+  command: [openclaw]
+baseline:
+  memory:
+    context_budget_tokens: 4096
+    ingest_chunk_tokens: 4096
+    operation_max_attempts: 3
+  rag:
+    chunk_tokens: 1024
+    chunk_overlap_tokens: 50
+    retrieve_top_k: 5
+  long_context:
+    context_window_tokens: 128000
+    reserve_tokens: 16000
+  dualmem:
+    retrieve_top_k: 20
+  a_mem:
+    retrieve_top_k: 5
+    neighbor_top_k: 5
+    evolution_threshold: 100
+  memos:
+    retrieve_top_k: 20
+    extract_max_output_tokens: 4096
+  memory_r2:
+    retrieve_top_k: 30
+    candidate_similarity_threshold: 0.1
+    retrieve_similarity_threshold: 0.3
+  praxismem:
+    max_tokens: 4096
+    max_tool_calls: 30
+  zep:
+    ingest_chunk_tokens: 2048
+    graphiti_output_tokens: 4096
+grading:
+  mode: deferred
+  workers: 1
+models:
+  task_llm:
+    model: qwen3.7-plus
+    api_key_env: TASK_LLM_API_KEY
+    base_url_env: TASK_LLM_BASE_URL
+  user_llm:
+    model: glm-5
+    api_key_env: USER_LLM_API_KEY
+    base_url_env: USER_LLM_BASE_URL
+    temperature: 0.0
+    thinking: false
+    thinking_protocol: glm
+  judge_llm:
+    model: glm-5
+    api_key_env: JUDGE_LLM_API_KEY
+    base_url_env: JUDGE_LLM_BASE_URL
+    temperature: 0.0
+    thinking: false
+    thinking_protocol: glm
+  memory_llm:
+    model: Qwen/Qwen3.5-9B
+    api_key_env: MEMORY_LLM_API_KEY
+    base_url_env: MEMORY_LLM_BASE_URL
+    temperature: 0.0
+    extra_body:
+      chat_template_kwargs:
+        enable_thinking: false
+embedding:
+  model: Qwen/Qwen3-Embedding-0.6B
+  dimensions: 1024
+  api_key_env: EMBEDDING_API_KEY
+  base_url_env: EMBEDDING_BASE_URL
+hermes:
+  expected_cli_version: "0.20.0"
+  context_length: 128000
+  max_turns: 500
+claude_code:
+  expected_cli_version: "2.1.153"
+  expected_sdk_version: "0.2.128"
+  anthropic_base_url_env: CLAUDE_CODE_BASE_URL

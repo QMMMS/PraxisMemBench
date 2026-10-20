@@ -1,0 +1,66 @@
+version: 1
+trajectories:
+  app_developer_poet_001__traj_001:
+    s007_tasks_docs_followup_tool:
+      preferences.shopping_preferences.prefers: [update_task.description]
+      relationship_network.frequent_contacts: [update_task.assignee]
+      preferences.food_preferences.dislikes: [update_task.description]
+    s025_airline_procedural_reservation:
+      relationship_network.relationship_strengths.medium_to_strong: [book_reservation.passengers]
+      relationship_network.extended_family: [book_reservation.destination]
+
+  british_local_business_engineer_001__traj_001:
+    s004_service_case_customer_visible_close_tool:
+      personality_and_values.positive_traits:
+        - route_service_case.routing_note
+        - write_resolution_entry.resolution_text
+        - close_service_case.closure_summary
+      preferences.work_style_preferences.friction_points:
+        - route_service_case.agent_ref
+        - route_service_case.routing_note
+        - write_resolution_entry.resolution_text
+        - close_service_case.closure_summary
+
+  humanitarian_aid_coordinator_001__traj_001:
+    s004_media_avoid_dense_reading_list_tool:
+      preferences.shopping.avoids: [recommend_reading.avoid_tags]
+      relationship_network.roommate: []
+    s009_bfcl_travel_artifact_sop_001_booking_artifact:
+      constraints_and_boundaries.policy_and_compliance: [create_booking_receipt_file.receipt_content]
+      relationship_network.community_contacts.description: [create_booking_receipt_file.receipt_content]
+      preferences.entertainment.likes: []
+      relationship_network.relationship_strengths.strongest: []
+    s019_media_short_session_reading_list_tool:
+      preferences.food.dislikes: [step_3.add_to_reading_list.note]
+      professional_and_daily_role.common_tasks: [step_4.add_to_reading_list.note]
+
+  model_kit_manufacturer_001__traj_001:
+    s019_food_tool:
+      preferences.food.likes:
+        - search_recipes.query
+        - search_recipes.cuisine
+        - create_meal_plan.constraints_note
+
+  property_aesthetics_wealth_manager_001__traj_001:
+    s009_tasks_docs_followup_from_doc_artifact:
+      professional_and_daily_role.work_time_structure: [create_task.description]
+      preferences.communication_style.struggles_with: [create_task.description]
+      personality_and_values.spending_style: [create_task.description, create_task.labels]
+    s024_tasks_docs_procedural_followup_task:
+      professional_and_daily_role.work_time_structure: [create_task.description]
+      preferences.communication_style.struggles_with: [create_task.description]
+      personality_and_values.spending_style: [create_task.description, create_task.labels]
+
+  french_town_mayor_001__traj_001:
+    s007_bfcl_ticket_close_open_tool:
+      constraints_and_boundaries.health: [step_3.close_ticket.ticket_id]
+      personality_and_values.core_values: [step_4.close_ticket.ticket_id]
+
+  linguist_travel_sister_001__traj_001:
+    s013_posting_amplify_relevant_post_tool:
+      relationship_network.colleagues.description: [retweet.tweet_id]
+      preferences.entertainment_preferences.likes: [search_tweets.keyword]
+      relationship_network.relationship_strengths.task_oriented: [search_tweets.keyword]
+    s023_posting_procedural_place_signal_retweet:
+      preferences.entertainment_preferences.likes: [search_tweets.keyword]
+      relationship_network.relationship_strengths.task_oriented: [search_tweets.keyword]
